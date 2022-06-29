@@ -1,0 +1,45 @@
+\documentclass{ctexart}
+
+\title{作业二：用户输入实验报告}
+
+
+\author{作者姓名：金文宽 \\作者专业和学号：统计学3210105908}
+
+\begin{document}
+
+\maketitle
+
+
+尝试了用户输入的小实验，并将展示内容进行了一些有趣的修改。
+\section{实验内容}
+Shell脚本如下：
+\begin{verbatim}
+#!/bin/bash
+
+echo "Is 91 a prime number?Please answer yes or no."
+read answer
+
+case "$answer" in
+     yes) echo "Stupid!91=7*13";;
+     no) echo "Wow,you are right!91=7*13";;
+     y) echo "Stupid!91=7*13";;
+     n) echo "Wow,you are right!91=7*13";;
+     *) echo "I guess you should retake your primary education!";;
+esac
+
+exit 0
+\end{verbatim}
+输出结果：
+\verb|Is 91 a prime number?Please answer yes or no.|
+
+\textbf{yes}
+
+\verb|Stupid!91=7*13|
+\section{学习收获}
+在上面的用户输入实验中，我学到了\verb|case|结构，当\verb|case|语句被执行时，他就会把变量\verb|answer|的内容与下面的这些字符串进行比较，并且是依次进行的，一旦匹配成功，那么就会立刻执行后面的代码，并且结束比较.同时还学到了一个小技巧，那就是在最后加上一个\verb|*|，表示如果前面的都没有匹配成功，那么就执行\verb|*|后面的代码.这里的原理就是\verb|*|代表anything，任何字符串，并且他的比较是依次做下来的，这也是\verb|*|要放到最后的原因，倘若将\verb|*|放在最前面，那么其他的情况也就不会执行了，只会始终执行\verb|*|后面的代码.
+
+原来代码的问题是询问时间然后输出早上好或者晚上好，我进行了一个有趣的改动，将问题改成了一个常人容易犯错误的小问题：91是否是素数？如果你现在依然认为91是素数的话...
+
+\verb|I guess you should retake your primary education!|
+
+\end{document}
